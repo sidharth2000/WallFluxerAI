@@ -1,0 +1,80 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+dist/
+dist-ssr/
+dist-electron/
+build/
+release/
+out/
+
+# Local files
+*.local
+tmp/
+temp/
+.cache/
+
+# Archives and packaged applications
+*.zip
+*.7z
+*.rar
+*.exe
+*.msi
+*.dmg
+*.AppImage
+
+# AI models and large binary files
+*.safetensors
+*.gguf
+*.ckpt
+*.onnx
+*.pt
+*.pth
+*.bin
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Coverage and test output
+coverage/
+
+# OS temporary files
+*.tmp
+*.bak

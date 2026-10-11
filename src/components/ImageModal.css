@@ -1,0 +1,191 @@
+.image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(0, 0, 0, 0.82);
+  cursor: zoom-out;
+}
+
+
+/* Image area — this is what actually pans/zooms */
+
+.image-modal-viewer {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  overflow: hidden;
+  cursor: grab;
+}
+
+.image-modal-viewer.is-dragging {
+  cursor: grabbing;
+}
+
+.image-modal-img {
+  max-width: 100%;
+  max-height: 100%;
+
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+
+  cursor: grab;
+  user-select: none;
+}
+
+.image-modal-viewer.is-dragging .image-modal-img {
+  cursor: grabbing;
+}
+
+
+/* Close button */
+/* Close button — modern floating control */
+.image-modal-close {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    z-index: 1001;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+
+    background: rgba(28, 26, 25, 0.75);
+    backdrop-filter: blur(12px);
+
+    color: rgba(255, 255, 255, 0.85);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.image-modal-close:hover {
+    background: #ff7a29;
+    border-color: #ff7a29;
+    color: #ffffff;
+
+    transform: scale(1.06);
+
+    box-shadow: 0 4px 20px rgba(255, 122, 41, 0.3);
+}
+
+.image-modal-close:active {
+    transform: scale(0.94);
+}
+
+.image-modal-close:focus-visible {
+    outline: 2px solid #ff7a29;
+    outline-offset: 3px;
+}
+
+.image-modal-close svg {
+    font-size: 22px;
+}
+
+/* Zoom control pill, bottom-center */
+
+.image-modal-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 6px;
+
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+
+  cursor: default;
+}
+
+.image-modal-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.image-modal-controls button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.image-modal-controls button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.image-modal-zoom {
+  min-width: 42px;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+
+.image-modal-divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Hint text, bottom of screen */
+
+.image-modal-hint {
+  position: fixed;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+
+  cursor: default;
+}

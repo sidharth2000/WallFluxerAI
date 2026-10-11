@@ -1,0 +1,265 @@
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.model-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+
+  background: var(--surface);
+
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.model-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.model-card-loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+   ========================================================= */
+
+.model-card-thumbnail {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.model-card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Delete icon — sits quietly in the corner, only shows on hover */
+
+.model-delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.model-card:hover .model-delete-button {
+  opacity: 1;
+}
+
+.model-delete-button:hover:not(:disabled) {
+  background: var(--error);
+  border-color: var(--error);
+}
+
+.model-delete-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Inline confirm bar, replaces the icon while confirming */
+
+.model-delete-confirm {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  padding: 6px 8px;
+
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-sm);
+}
+
+.model-delete-confirm-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.model-delete-confirm-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.model-delete-confirm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.model-delete-confirm-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.model-delete-confirm-yes {
+  background: var(--error);
+  color: #fff;
+}
+
+.model-delete-confirm-no {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.model-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 12px;
+}
+
+.model-card-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fixed to a 2-line height so cards line up whether the description
+   is one line or two — tags/footer always sit at the same offset. */
+.model-card-description {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+
+  min-height: calc(1.4em * 2);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.model-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-top: 2px;
+}
+
+.model-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* Same hash-based palette as .tag-chip-N in AddModelModal.css, via the
+   shared tagColorIndex() util — a tag keeps its color everywhere it appears. */
+.model-tag-0 { background: rgba(96, 165, 250, 0.15);  color: #60a5fa; }
+.model-tag-1 { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+.model-tag-2 { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+.model-tag-3 { background: rgba(251, 146, 60, 0.15);  color: #fb923c; }
+.model-tag-4 { background: rgba(74, 222, 128, 0.15);  color: #4ade80; }
+.model-tag-5 { background: rgba(45, 212, 191, 0.15);  color: #2dd4bf; }
+.model-tag-6 { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+.model-tag-7 { background: rgba(250, 204, 21, 0.15);  color: #facc15; }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.model-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 6px;
+  padding-top: 8px;
+
+  border-top: 1px solid var(--border);
+}
+
+.model-card-size {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.model-default {
+  padding: 2px 7px;
+
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.model-card-error {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-bottom: 4px;
+}

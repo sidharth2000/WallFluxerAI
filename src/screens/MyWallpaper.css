@@ -1,0 +1,509 @@
+.wallpaper-page {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    height: 100%;
+    overflow-y: auto;
+    padding: 48px 40px 64px;
+    font-family: 'Inter', system-ui, sans-serif;
+    box-sizing: border-box;
+}
+
+.wallpaper-header {
+    max-width: 1400px;
+    margin: 0 auto 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wallpaper-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--text);
+}
+
+.wallpaper-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.wallpaper-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.wallpaper-count-badge svg {
+    font-size: 14px;
+}
+
+.wallpaper-header-sub {
+    font-size: 13.5px;
+    color: var(--text-muted);
+}
+
+.wallpaper-error {
+    max-width: 1400px;
+    margin: 0 auto 24px;
+    padding: 12px 16px;
+    border: 1px solid var(--error);
+    background: color-mix(in srgb, var(--error) 12%, var(--surface));
+    color: var(--error);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+.wallpaper-empty {
+    max-width: 1400px;
+    margin: 80px auto;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.wallpaper-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.wallpaper-card {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease 0.4s;
+}
+
+.wallpaper-card:hover {
+    transform: translateY(-6px) scale(1.012);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-card), 0 12px 28px -12px var(--accent-glow),
+        0 0 0 1px var(--accent-glow);
+}
+
+.wallpaper-card:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+}
+
+/* Card while its delete request is in flight */
+.wallpaper-card-loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Spinning highlight that sweeps the border on hover, then fades
+   as the solid accent border (above) settles in. */
+.wallpaper-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: calc(var(--radius) + 2px);
+    padding: 2px;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        var(--accent) 60deg,
+        transparent 130deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.wallpaper-card:hover::before {
+    animation: border-spin 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1;
+}
+
+@keyframes border-spin {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.wallpaper-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--surface-raised);
+    overflow: hidden;
+}
+
+.wallpaper-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wallpaper-card:hover .wallpaper-card-image img {
+    transform: scale(1.06);
+}
+
+.wallpaper-card-scrim {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.wallpaper-card:hover .wallpaper-card-scrim {
+    opacity: 1.15;
+}
+
+.wallpaper-card-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wallpaper-card-error {
+    color: #d32f2f;
+    font-size: 12px;
+}
+
+.wallpaper-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.wallpaper-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 9px 4px 7px;
+    border-radius: 999px;
+    line-height: 1.4;
+    border: 1px solid transparent;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wallpaper-tag svg {
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.tag-style {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.tag-theme {
+    color: var(--info);
+    background: color-mix(in srgb, var(--info) 12%, transparent);
+    border-color: color-mix(in srgb, var(--info) 35%, transparent);
+}
+
+.tag-composition {
+    color: var(--success);
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    border-color: color-mix(in srgb, var(--success) 35%, transparent);
+}
+
+.tag-model {
+    color: var(--text-muted);
+    background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+    border-color: color-mix(in srgb, var(--text-muted) 30%, transparent);
+    flex: 1 1 100%;
+}
+
+.wallpaper-meta {
+    display: flex;
+    gap: 14px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.wallpaper-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.wallpaper-meta-item svg {
+    font-size: 14px;
+}
+
+.wallpaper-apply {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.wallpaper-apply svg {
+    font-size: 15px;
+}
+
+.wallpaper-apply:hover:not(:disabled) {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.wallpaper-apply:disabled {
+    cursor: default;
+    color: var(--text-muted);
+}
+
+.wallpaper-spinner {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid var(--border-strong);
+    border-top-color: var(--accent);
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   DELETE (inline, same pattern as ModelCard)
+   ========================================================= */
+
+/* Delete icon: tucked in the corner, only shows on hover */
+.wallpaper-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-sm);
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+
+    opacity: 0;
+    transition: opacity 0.15s ease, background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.wallpaper-card:hover .wallpaper-delete-btn,
+.wallpaper-delete-btn:focus-visible {
+    opacity: 1;
+}
+
+.wallpaper-delete-btn:hover:not(:disabled) {
+    background: var(--error);
+    border-color: var(--error);
+}
+
+.wallpaper-delete-btn:disabled {
+    cursor: not-allowed;
+}
+
+/* Inline confirm bar, replaces the icon while confirming */
+.wallpaper-delete-confirm {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    padding: 6px 8px;
+
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid var(--error);
+    border-radius: var(--radius-sm);
+    cursor: default;
+}
+
+.wallpaper-delete-confirm-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wallpaper-delete-confirm-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.wallpaper-delete-confirm-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.wallpaper-delete-confirm-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.wallpaper-delete-confirm-yes {
+    background: var(--error);
+    color: #fff;
+}
+
+.wallpaper-delete-confirm-no {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.wallpaper-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    background: var(--surface-raised);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-card);
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    font-weight: 500;
+    animation: toast-in 0.2s ease;
+    z-index: 50;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 8px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Loading skeleton */
+
+.wallpaper-card.skeleton {
+    aspect-ratio: 4 / 3.4;
+    background: linear-gradient(
+        100deg,
+        var(--surface) 35%,
+        var(--surface-raised) 50%,
+        var(--surface) 65%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .wallpaper-page {
+        padding: 32px 18px 48px;
+    }
+
+    .wallpaper-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* No hover on touch devices — keep the delete button visible. */
+    .wallpaper-delete-btn {
+        opacity: 1;
+    }
+}

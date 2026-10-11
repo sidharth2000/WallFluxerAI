@@ -1,0 +1,43 @@
+/* Drawer shell */
+.app-sidebar .MuiDrawer-paper {
+  background-color: var(--surface);
+  border-right: 1px solid var(--border);
+  color: var(--text);
+}
+
+.app-sidebar-wordmark {
+  color: var(--text);
+}
+
+.app-sidebar hr.MuiDivider-root {
+  border-color: var(--border);
+}
+
+/* Nav items */
+.app-sidebar .MuiListItemButton-root {
+  border-radius: var(--radius-sm);
+  margin: 2px 8px;
+  width: auto;
+  color: var(--text-muted);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.app-sidebar .MuiListItemButton-root:hover {
+  background-color: var(--accent-soft);
+  color: var(--text);
+}
+
+.app-sidebar .MuiListItemButton-root.Mui-selected,
+.app-sidebar .MuiListItemButton-root.Mui-selected:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.app-sidebar .MuiListItemIcon-root {
+  color: inherit;
+}
+
+.app-sidebar .MuiListItemText-primary {
+  font-size: 0.9rem;
+  font-weight: 500;
+}

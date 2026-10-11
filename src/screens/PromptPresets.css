@@ -1,0 +1,1031 @@
+/* ==========================================================================
+   Prompt Presets screen layout
+   ========================================================================== */
+
+.presets-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.presets-body {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.presets-list-pane,
+.presets-editor-pane {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+.presets-list-pane {
+  flex: 1 1 0;
+  min-width: 300px;
+  max-width: 380px;
+  gap: 12px;
+  padding: 16px;
+}
+
+.presets-editor-pane {
+  flex: 2 1 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.presets-list::-webkit-scrollbar,
+.presets-editor-scroll::-webkit-scrollbar,
+.presets-carousel-track::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.presets-list::-webkit-scrollbar-thumb,
+.presets-editor-scroll::-webkit-scrollbar-thumb,
+.presets-carousel-track::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+@keyframes presets-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes presets-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Left pane
+   ========================================================================== */
+
+.presets-title {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ---------- segmented tabs with a sliding pill ---------- */
+
+.presets-tabs {
+  --i: 0;
+  position: relative;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.presets-tabs-pill {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc((100% - 6px) / 3);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: calc(var(--radius-sm) - 2px);
+  transform: translateX(calc(var(--i) * 100%));
+  transition: transform 0.25s cubic-bezier(0.3, 0.8, 0.3, 1);
+}
+
+.presets-tab {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 2px 7px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.presets-tab svg {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.presets-tab.active svg {
+  transform: scale(1.1);
+}
+
+.presets-tab:hover:not(.active) {
+  color: var(--text);
+}
+
+.presets-tab.active {
+  color: var(--accent);
+}
+
+/* ---------- search ---------- */
+
+.presets-search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.presets-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-focus);
+}
+
+.presets-search input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.presets-search input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---------- list ---------- */
+
+.presets-list {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 -6px;
+  padding: 0 6px;
+  overflow-y: auto;
+}
+
+.presets-list-message {
+  padding: 20px 8px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.presets-list-error {
+  color: var(--error);
+}
+
+.presets-skeleton {
+  flex: 0 0 auto;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--surface-raised) 25%,
+    color-mix(in srgb, var(--surface-raised) 60%, var(--border-strong)) 50%,
+    var(--surface-raised) 75%
+  );
+  background-size: 200% 100%;
+  animation: presets-shimmer 1.3s linear infinite;
+}
+
+@keyframes presets-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.presets-row {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.presets-row:hover:not(.selected) {
+  background: var(--surface-raised);
+}
+
+.presets-row.selected {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.presets-row-name {
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.presets-row.selected .presets-row-name {
+  color: var(--accent);
+}
+
+/* the unsaved new / duplicated preset */
+.presets-row.draft {
+  cursor: default;
+  border: 1px dashed var(--accent);
+  box-shadow: none;
+  animation: presets-fade-up 0.25s ease;
+}
+
+.presets-row-tag {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  background: var(--accent);
+  border-radius: 999px;
+  color: var(--button-accent-text);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* brief highlight on the row that was just created, saved or restored */
+.presets-row.flash {
+  animation: presets-row-flash 1.6s ease;
+}
+
+@keyframes presets-row-flash {
+  0%   { background: color-mix(in srgb, var(--success) 35%, transparent); }
+  100% { background: var(--accent-soft); }
+}
+
+.presets-new-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.presets-new-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.presets-new-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Right pane: scrollable editor + sticky save bar
+   ========================================================================== */
+
+.presets-editor-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 22px 24px;
+}
+
+/* re-mounts on every preset switch, so the content gently fades in */
+.presets-editor-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: presets-fade-up 0.22s ease;
+}
+
+.presets-editor-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.presets-editor-heading {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.presets-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.presets-editor-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.presets-icon-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+}
+
+.presets-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.presets-icon-btn:hover {
+  background: var(--surface-raised);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.presets-icon-btn.danger:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+/* ---------- inline delete confirmation ---------- */
+
+.presets-confirm {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 4px 4px 12px;
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-sm);
+  animation: presets-confirm-in 0.2s ease;
+}
+
+@keyframes presets-confirm-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.presets-confirm-label {
+  margin-right: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--error);
+  white-space: nowrap;
+}
+
+.presets-confirm-btn {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.presets-confirm-btn.yes {
+  background: var(--error);
+  color: #fff;
+}
+
+.presets-confirm-btn.yes:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.presets-confirm-btn.no {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.presets-confirm-btn.no:hover:not(:disabled) {
+  background: var(--surface-raised);
+}
+
+.presets-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- collapsible help ---------- */
+
+.presets-help {
+  margin-top: -10px;
+}
+
+.presets-help-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.presets-help-toggle:hover,
+.presets-help-toggle[aria-expanded="true"] {
+  color: var(--accent);
+}
+
+.presets-help-panel {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  animation: presets-fade-up 0.2s ease;
+}
+
+.presets-help-panel p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.presets-help-panel p + p {
+  margin-top: 6px;
+  color: var(--text);
+}
+
+/* ---------- fields ---------- */
+
+.presets-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.presets-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.presets-input,
+.presets-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.presets-input:focus,
+.presets-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-focus);
+}
+
+.presets-input::placeholder,
+.presets-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.presets-textarea {
+  height: 132px;
+  resize: none;
+  line-height: 1.5;
+}
+
+/* ---------- positive / negative prompts ---------- */
+
+.presets-prompts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.presets-prompt-box {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.presets-prompt-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.presets-prompt-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.presets-prompt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.presets-prompt-box.positive .presets-prompt-dot { background: var(--success); }
+.presets-prompt-box.negative .presets-prompt-dot { background: var(--error); }
+
+.presets-prompt-box.positive .presets-textarea:focus {
+  border-color: var(--success);
+  box-shadow: 0 0 0 1px var(--success);
+}
+
+.presets-prompt-box.negative .presets-textarea:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 1px var(--error);
+}
+
+.presets-prompt-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.presets-prompt-hint {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.presets-error {
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-sm);
+  color: var(--error);
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Sticky save bar
+   ========================================================================== */
+
+.presets-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.presets-footer-status {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.78rem;
+}
+
+.presets-status-hint {
+  color: var(--text-muted);
+}
+
+.presets-status-dirty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.presets-dirty-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: presets-dot-pulse 1.8s ease-out infinite;
+}
+
+@keyframes presets-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); }
+  100% { box-shadow: 0 0 0 8px transparent; }
+}
+
+.presets-btn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.15s ease;
+}
+
+.presets-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.presets-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.presets-btn-primary {
+  min-width: 130px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--button-accent-text);
+}
+
+.presets-btn-primary:hover:not(:disabled) {
+  background: var(--accent-dim);
+  border-color: var(--accent-dim);
+}
+
+.presets-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  animation: presets-fade-up 0.25s ease;
+}
+
+.presets-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--button-accent-text, #fff);
+  border-radius: 50%;
+  animation: presets-spin 0.55s linear infinite;
+}
+
+/* saved: turns green for a moment, with a ripple and a popping check */
+.presets-btn-primary.saved,
+.presets-btn-primary.saved:disabled {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+  opacity: 1;
+  cursor: default;
+}
+
+.presets-btn-primary.saved::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: presets-ripple 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+.presets-check {
+  animation: presets-pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes presets-ripple {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(14); opacity: 0; }
+}
+
+@keyframes presets-pop {
+  0%   { transform: scale(0) rotate(-40deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.presets-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.presets-empty-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.presets-empty-text {
+  max-width: 420px;
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.presets-empty .presets-btn {
+  gap: 6px;
+}
+
+/* ==========================================================================
+   Reference images
+   ========================================================================== */
+
+.presets-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.presets-gallery-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.presets-gallery-count {
+  padding: 1px 7px;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.presets-gallery-message {
+  padding: 10px 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.presets-gallery-error {
+  color: var(--error);
+}
+
+.presets-carousel {
+  position: relative;
+}
+
+.presets-carousel-track {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.presets-carousel-item {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 140px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: zoom-in;
+  scroll-snap-align: start;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.presets-carousel-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.presets-carousel-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.presets-carousel-btn {
+  position: absolute;
+  top: calc(50% - 3px);
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.presets-carousel-btn.left  { left: -8px; }
+.presets-carousel-btn.right { right: -8px; }
+
+.presets-carousel-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.presets-carousel-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Toast
+   ========================================================================== */
+
+.presets-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  z-index: 1000;
+  max-width: min(520px, 90vw);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px 10px 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card), 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  font-size: 0.85rem;
+  transform: translateX(-50%);
+  animation: presets-toast-in 0.3s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+}
+
+@keyframes presets-toast-in {
+  from { opacity: 0; transform: translate(-50%, 16px) scale(0.96); }
+  to   { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.presets-toast-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.presets-toast.success .presets-toast-icon { background: var(--success); }
+.presets-toast.info .presets-toast-icon    { background: var(--accent); color: var(--button-accent-text); }
+.presets-toast.error .presets-toast-icon   { background: var(--error); }
+
+.presets-toast-icon svg {
+  font-size: 16px;
+}
+
+.presets-toast-message {
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.presets-toast-action {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.presets-toast-action:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.presets-toast-close {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.presets-toast-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .presets-editor-body,
+  .presets-help-panel,
+  .presets-confirm,
+  .presets-row.draft,
+  .presets-row.flash,
+  .presets-btn-content,
+  .presets-btn-primary.saved::before,
+  .presets-check,
+  .presets-dirty-dot,
+  .presets-skeleton,
+  .presets-toast {
+    animation: none !important;
+  }
+
+  .presets-tabs-pill {
+    transition: none;
+  }
+}

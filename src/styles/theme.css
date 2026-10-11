@@ -1,0 +1,116 @@
+/* =========================================================
+   WALLFLUXER GLOBAL THEME
+   ========================================================= */
+
+:root {
+  /* Backgrounds */
+  --bg: #121011;
+  --surface: #1b1817;
+  --surface-raised: #211c1a;
+
+  /* Borders */
+  --border: #322b27;
+  --border-strong: #46392f;
+
+  /* Text */
+  --text: #f3ede6;
+  --text-muted: #9c9089;
+
+  /* Accent */
+  --accent: #ff7a29;
+  --accent-dim: #e0631a;
+  --accent-soft: rgba(255, 122, 41, 0.12);
+  --accent-glow: rgba(255, 122, 41, 0.25);
+
+  /* Status */
+  --success: #4ade80;
+  --warning: #facc15;
+  --error: #ef4444;
+  --info: #60a5fa;
+
+  /* Shape */
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  /* Shadows */
+  --shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.02) inset,
+    0 8px 20px rgba(0, 0, 0, 0.25);
+
+  --shadow-focus:
+    0 0 0 3px var(--accent-soft),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+
+  /* Other */
+  --button-accent-text: #1a0f06;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg: #f5f3f1;
+  --surface: #ffffff;
+  --surface-raised: #faf8f6;
+
+  /* Borders */
+  --border: #e3ded9;
+  --border-strong: #cec6bf;
+
+  /* Text */
+  --text: #211c1a;
+  --text-muted: #756b65;
+
+  /* Accent */
+  --accent: #e86620;
+  --accent-dim: #c95216;
+  --accent-soft: rgba(232, 102, 32, 0.10);
+  --accent-glow: rgba(232, 102, 32, 0.18);
+
+  /* Status */
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --error: #dc2626;
+  --info: #2563eb;
+
+  /* Shadows */
+  --shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 4px 16px rgba(40, 30, 20, 0.08);
+
+  --shadow-focus:
+    0 0 0 3px var(--accent-soft),
+    0 6px 20px rgba(40, 30, 20, 0.12);
+
+  --button-accent-text: #ffffff;
+}
+
+
+/* =========================================================
+   GLOBAL BASE
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}

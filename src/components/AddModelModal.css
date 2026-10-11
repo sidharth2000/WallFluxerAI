@@ -1,0 +1,450 @@
+.add-model-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 64px);
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    outline: none;
+}
+
+
+/* Header */
+
+.add-model-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.add-model-modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.add-model-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.add-model-modal-close:hover {
+    background: var(--surface-raised);
+    color: var(--text);
+}
+
+
+/* Body */
+
+.add-model-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.field-label-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.field-counter {
+    margin-left: auto;
+
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.field-input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 9px 11px;
+
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-input::placeholder {
+    color: var(--text-muted);
+}
+
+.field-input:focus {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-focus);
+}
+
+.field-textarea {
+    resize: none;
+    line-height: 1.5;
+}
+
+.field-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+
+/* Fieldset (disables all inputs while submitting) */
+
+.add-model-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.add-model-fieldset:disabled .field-input,
+.add-model-fieldset:disabled .browse-button,
+.add-model-fieldset:disabled .tag-input-wrapper {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* File picker */
+
+.model-file-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.model-file-picker .field-input {
+    flex: 1;
+    cursor: default;
+}
+
+.browse-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+
+    height: 36px;
+    padding: 0 12px;
+
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.browse-button:hover {
+    border-color: var(--border-strong);
+    background: var(--surface);
+}
+
+
+/* Info tooltip */
+
+.info-tooltip {
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+
+    outline: none;
+}
+
+.info-tooltip:hover,
+.info-tooltip[aria-expanded="true"] {
+    color: var(--accent);
+}
+
+.info-tooltip-box {
+    position: fixed;
+    transform: translateY(-50%);
+
+    width: 320px;
+    max-width: calc(100vw - 32px);
+
+    padding: 12px 14px;
+
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: default;
+
+    z-index: 1400;
+
+    animation: info-tooltip-in 0.12s ease-out;
+}
+
+@keyframes info-tooltip-in {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+.info-tooltip-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.info-tooltip-box a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.info-tooltip-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* Tag input */
+
+.tag-input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 40px;
+    padding: 6px 8px;
+
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tag-input-wrapper:focus-within {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-focus);
+}
+
+.tag-chip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 3px 6px 3px 10px;
+    border-radius: 12px;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Distinct color per tag, assigned by hash so it stays stable.
+   Kept in sync with .model-tag-N in ModelCard.css via the shared
+   tagColorIndex() util, so a tag is the same color everywhere. */
+.tag-chip-0 { background: rgba(96, 165, 250, 0.15);  color: #60a5fa; }
+.tag-chip-1 { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+.tag-chip-2 { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+.tag-chip-3 { background: rgba(251, 146, 60, 0.15);  color: #fb923c; }
+.tag-chip-4 { background: rgba(74, 222, 128, 0.15);  color: #4ade80; }
+.tag-chip-5 { background: rgba(45, 212, 191, 0.15);  color: #2dd4bf; }
+.tag-chip-6 { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+.tag-chip-7 { background: rgba(250, 204, 21, 0.15);  color: #facc15; }
+
+.tag-chip-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: currentColor;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.tag-chip-remove:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.tag-input {
+    flex: 1;
+    min-width: 80px;
+
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+
+    outline: none;
+}
+
+.tag-input::placeholder {
+    color: var(--text-muted);
+}
+
+
+/* Error */
+
+.add-model-modal-error {
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+    font-size: 12px;
+}
+
+
+/* Footer actions */
+
+.add-model-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.modal-button {
+    padding: 9px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.modal-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal-button-secondary {
+    background: var(--surface-raised);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.modal-button-secondary:hover:not(:disabled) {
+    border-color: var(--border-strong);
+}
+
+.modal-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    /* keeps the button from resizing as the stage label changes */
+    min-width: 170px;
+
+    background: var(--accent);
+    color: var(--button-accent-text);
+}
+
+.modal-button-primary:hover:not(:disabled) {
+    background: var(--accent-dim);
+}
+
+
+/* Spinner inside the primary button */
+
+.button-spinner {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+
+    animation: button-spin 0.5s linear infinite;
+}
+
+@keyframes button-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

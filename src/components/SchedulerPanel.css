@@ -1,0 +1,227 @@
+.scheduler-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+}
+
+.scheduler-panel-loading {
+    align-items: center;
+    justify-content: center;
+}
+
+.scheduler-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.scheduler-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.scheduler-field-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text);
+}
+
+.scheduler-field-value {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.scheduler-hint {
+    margin-top: auto;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ---- active status card ---- */
+
+.scheduler-status-card {
+    gap: 12px;
+}
+
+.scheduler-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scheduler-status-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.scheduler-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+.scheduler-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    animation: scheduler-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes scheduler-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.scheduler-status-sub {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.scheduler-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.scheduler-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 10px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.scheduler-stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.scheduler-stat-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.scheduler-idle-row {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.scheduler-idle-dot {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.scheduler-idle-dot.met {
+    background: var(--accent);
+}
+
+.scheduler-idle-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.scheduler-idle-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.scheduler-config-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.scheduler-config-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.scheduler-config-row span {
+    margin-left: auto;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.scheduler-status-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scheduler-last-generated {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.scheduler-status-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.scheduler-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.scheduler-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.scheduler-btn.ghost {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+}
+
+.scheduler-btn.danger {
+    background: var(--danger, #e5484d);
+    border: none;
+    color: #fff;
+}

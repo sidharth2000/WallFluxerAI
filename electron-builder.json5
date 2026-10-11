@@ -1,0 +1,20 @@
+{
+  "appId": "com.yourname.wallfluxer",
+  "productName": "WallFluxer",
+  "asar": true,
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "dir",
+        "arch": ["x64"]
+      }
+    ]
+  }
+}
