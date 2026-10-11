@@ -32,6 +32,29 @@ No subscriptions. No cloud. No queue. Your ideas never leave your PC.
 
 ---
 
+## 🖼️ Examples
+
+<table>
+  <tr>
+    <td><img src="docs/previews/anime_boy.png" alt="Anime boy" /></td>
+    <td><img src="docs/previews/anime_girl.png" alt="Anime girl" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/astronaut.png" alt="Astronaut" /></td>
+    <td><img src="docs/previews/fox.png" alt="Fox" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/miniature.png" alt="Miniature" /></td>
+    <td><img src="docs/previews/ninja.png" alt="Ninja" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/samurai.png" alt="Samurai" /></td>
+    <td><img src="docs/previews/skeleton.png" alt="Skeleton" /></td>
+  </tr>
+</table>
+
+---
+
 ## 🚀 Get started in 3 steps
 
 No installer and no setup. Download, extract, double-click.
@@ -79,32 +102,6 @@ WallFluxer starts its own engine in the background, shows a loading screen while
 - **My Wallpapers:** browse everything you have generated.
 - **Settings:** tweak the app to your liking.
 
----
-
-## 🖼️ Examples
-
-All made with WallFluxer from a single sentence.
-
-## 🖼️ Examples
-
-<table>
-  <tr>
-    <td><img src="docs/previews/anime_boy.jpg" alt="Anime boy" /></td>
-    <td><img src="docs/previews/anime_girl.jpg" alt="Anime girl" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/astronaut.jpg" alt="Astronaut" /></td>
-    <td><img src="docs/previews/fox.jpg" alt="Fox" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/miniature.jpg" alt="Miniature" /></td>
-    <td><img src="docs/previews/ninja.jpg" alt="Ninja" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/samurai.jpg" alt="Samurai" /></td>
-    <td><img src="docs/previews/skeleton.jpg" alt="Skeleton" /></td>
-  </tr>
-</table>
 ---
 
 ## ⚠️ Content warning and responsibility
@@ -193,6 +190,7 @@ The app starts the backend executable for you, so build the Python backend first
 Each model keeps its own license. Please check the original pages before redistributing them.
 
 ---
+
 
 <p align="center">
   Made with ❤️ for people who think their desktop deserves better.
