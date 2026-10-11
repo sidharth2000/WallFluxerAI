@@ -32,29 +32,6 @@ No subscriptions. No cloud. No queue. Your ideas never leave your PC.
 
 ---
 
-## 🖼️ Examples
-
-<table>
-  <tr>
-    <td><img src="docs/previews/anime_boy.png" alt="Anime boy" /></td>
-    <td><img src="docs/previews/anime_girl.png" alt="Anime girl" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/astronaut.png" alt="Astronaut" /></td>
-    <td><img src="docs/previews/fox.png" alt="Fox" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/miniature.png" alt="Miniature" /></td>
-    <td><img src="docs/previews/ninja.png" alt="Ninja" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/previews/samurai.png" alt="Samurai" /></td>
-    <td><img src="docs/previews/skeleton.png" alt="Skeleton" /></td>
-  </tr>
-</table>
-
----
-
 ## 🚀 Get started in 3 steps
 
 No installer and no setup. Download, extract, double-click.
@@ -84,6 +61,29 @@ WallFluxer starts its own engine in the background, shows a loading screen while
 | **GPU** | NVIDIA, **3 GB VRAM or more** |
 | **Disk** | About 6 GB or more free |
 | **Internet** | Only needed to download the app. Generation runs fully offline. |
+
+---
+
+## 🖼️ Examples
+
+<table>
+  <tr>
+    <td><img src="docs/previews/anime_boy.png" alt="Anime boy" /></td>
+    <td><img src="docs/previews/anime_girl.png" alt="Anime girl" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/astronaut.png" alt="Astronaut" /></td>
+    <td><img src="docs/previews/fox.png" alt="Fox" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/miniature.png" alt="Miniature" /></td>
+    <td><img src="docs/previews/ninja.png" alt="Ninja" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/samurai.png" alt="Samurai" /></td>
+    <td><img src="docs/previews/skeleton.png" alt="Skeleton" /></td>
+  </tr>
+</table>
 
 ---
 
