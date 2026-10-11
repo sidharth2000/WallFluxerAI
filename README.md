@@ -19,6 +19,11 @@
 </p>
 
 <p align="center">
+  <b>Designed and built by <a href="https://www.linkedin.com/in/sidharthan-jayavelu/">Sidharthan Jayavelu</a></b><br/>
+  <a href="https://www.linkedin.com/in/sidharthan-jayavelu/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Sidharthan%20Jayavelu-0A66C2?logo=linkedin&logoColor=white" /></a>
+</p>
+
+<p align="center">
   <a href="https://drive.google.com/file/d/1KVTOqi_gtF73Ez3Pj6zLKPzHbUgZQkkg/view?usp=sharing"><b>⬇ Download for Windows</b></a>
 </p>
 
@@ -37,14 +42,15 @@ No subscriptions. No cloud. No queue. Your ideas never leave your PC.
 No installer and no setup. Download, extract, double-click.
 
 1. **[Download the zip from Google Drive](https://drive.google.com/file/d/1KVTOqi_gtF73Ez3Pj6zLKPzHbUgZQkkg/view?usp=sharing)** (about 5 GB).
+   The 5 GB already includes the base model and everything the app needs. There is nothing else to install, so you can download with confidence.
    Google may warn that the file is too large to scan for viruses. Click **Download anyway**.
 2. **Extract the whole zip** to a folder you own, for example:
    ```
-   D:\WallFluxer-v0.0.0-win-x64\
+   D:\WallFluxer-v1-win-x64\
    ```
 3. **Launch the app** by double-clicking:
    ```
-   D:\WallFluxer-v0.0.0-win-x64\WallFluxer\WallFluxer.exe
+   D:\WallFluxer-v1-win-x64\WallFluxer\WallFluxer.exe
    ```
 
 WallFluxer starts its own engine in the background, shows a loading screen while it warms up, then opens the app. When you close the window, the engine shuts down with it.
@@ -170,14 +176,14 @@ Everything you create stays in the `data` folder next to the app.
 - **Engine:** Python and [FastAPI](https://fastapi.tiangolo.com/), packaged with PyInstaller
 - **Image generation:** Stable Diffusion 1.5 with a custom hires-fix and upscaling pipeline
 
-### Run from source (client)
+### What I built
 
-```bash
-npm install
-npm run dev
-```
+WallFluxer is a complete product that I designed and built myself, from the interface down to the installer:
 
-The app starts the backend executable for you, so build the Python backend first and keep the project folders laid out as in the download. To create a release build, run `npm run package`.
+- **Desktop client:** an Electron + React + TypeScript app with a Material UI interface, gallery, model manager and preset editor.
+- **Python backend:** a local FastAPI image engine that runs the full generation pipeline on the user's GPU. It lives in its own repository: 👉 **[WallFluxerAI-API](https://github.com/sidharth2000/WallFluxerAI-API)**
+- **Custom image pipeline:** prompt building from presets, Stable Diffusion 1.5 generation, hires fix and Real-ESRGAN upscaling for 4K output.
+- **Packaging and distribution:** the backend is packaged with PyInstaller and the app starts and stops its own engine, so users get a zero-setup download.
 
 ---
 
@@ -191,6 +197,15 @@ Each model keeps its own license. Please check the original pages before redistr
 
 ---
 
+## 📬 Contact
+
+Hi, I'm **Sidharthan Jayavelu**, the developer behind WallFluxer. Questions, feedback, ideas or opportunities to work together are all welcome.
+
+👉 **[Connect with me on LinkedIn](https://www.linkedin.com/in/sidharthan-jayavelu/)**
+
+If you like the project, a ⭐ on the repo helps a lot.
+
+---
 
 <p align="center">
   Made with ❤️ for people who think their desktop deserves better.
