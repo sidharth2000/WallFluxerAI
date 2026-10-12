@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1KVTOqi_gtF73Ez3Pj6zLKPzHbUgZQkkg/view?usp=sharing"><b>⬇ Download for Windows</b></a>
+  <a href="https://drive.google.com/file/d/1u_zpunrsRhmcsf3D8uUy82hOUTY83nnR/view?usp=sharing"><b>⬇ Download for Windows</b></a>
 </p>
 
 ---
@@ -41,7 +41,7 @@ No subscriptions. No cloud. No queue. Your ideas never leave your PC.
 
 No installer and no setup. Download, extract, double-click.
 
-1. **[Download the zip from Google Drive](https://drive.google.com/file/d/1KVTOqi_gtF73Ez3Pj6zLKPzHbUgZQkkg/view?usp=sharing)** (about 5 GB).
+1. **[Download the zip from Google Drive](https://drive.google.com/file/d/1u_zpunrsRhmcsf3D8uUy82hOUTY83nnR/view?usp=sharing)** (about 5 GB).
    The 5 GB already includes the base model and everything the app needs. There is nothing else to install, so you can download with confidence.
    Google may warn that the file is too large to scan for viruses. Click **Download anyway**.
 2. **Extract the whole zip** to a folder you own, for example:
