@@ -46,11 +46,11 @@ No installer and no setup. Download, extract, double-click.
    Google may warn that the file is too large to scan for viruses. Click **Download anyway**.
 2. **Extract the whole zip** to a folder you own, for example:
    ```
-   D:\WallFluxer-v1-win-x64\
+   D:\WallFluxer-v0.0.0-win-x64\
    ```
 3. **Launch the app** by double-clicking:
    ```
-   D:\WallFluxer-v1-win-x64\WallFluxer\WallFluxer.exe
+   D:\WallFluxer-v0.0.0-win-x64\WallFluxer\WallFluxer.exe
    ```
 
 WallFluxer starts its own engine in the background, shows a loading screen while it warms up, then opens the app. When you close the window, the engine shuts down with it.
