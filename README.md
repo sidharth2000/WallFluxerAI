@@ -93,6 +93,14 @@ WallFluxer starts its own engine in the background, shows a loading screen while
 
 ---
 
+## 🎬 See WallFluxer in Action
+
+<p align="center">
+  <img src="docs/previews/demo-gif.gif" alt="WallFluxer desktop app demo" width="850" />
+</p>
+
+---
+
 ## 🎨 Make your first wallpaper
 
 1. Open **Create**.
